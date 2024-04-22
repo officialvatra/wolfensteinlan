@@ -11,7 +11,7 @@ const Login = () => {
     const Handlesubmit = async (e) => {
         e.preventdefault();
         try {
-            const response = await axios.post("", { username, pwd });
+            const response = await axios.post("https://localhost:3000/api/login", { username, pwd });
             console.log(response);
         } catch (error) {
             console.log(error);
