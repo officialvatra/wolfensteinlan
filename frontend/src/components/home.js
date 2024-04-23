@@ -4,11 +4,11 @@ import Axios from 'axios';
 import { useState } from "react";
 import axios from "axios";
 
-const Signup = () => {
+const Signup = () => {    // Definering av signup feltet
     const [name, setname] = useState();
     const [email, setemail] = useState();
 
-    const Handlesubmit = async () => {
+    const Handlesubmit = async () => { // Hva som skjer når du trykker på submit knappen
         // e.preventdefault();
         try {
             const response = await axios.post("", { name, email });
@@ -18,7 +18,7 @@ const Signup = () => {
         }
     };
 
-    return (
+    return ( // HTML kode som skal bli sendt når componenten er brukt
         <form onSubmit={Handlesubmit()}>
             <input type="text"
                 placeholder="name"
