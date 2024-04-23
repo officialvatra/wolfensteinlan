@@ -4,21 +4,21 @@ import Axios from 'axios';
 import { useState } from "react";
 import axios from "axios";
 
-const Login = () => {
-    const [username, setusername] = useState();
+const Login = () => { // login func
+    const [username, setusername] = useState(); // Variabler
     const [pwd, setpwd] = useState();
 
-    const Handlesubmit = async (e) => {
+    const Handlesubmit = async (e) => { // Sier seg selv
         e.preventdefault();
-        try {
-            const response = await axios.post("", { username, pwd });
+        try { // Prøv å gjør en api request 
+            const response = await axios.post("", { username, pwd }); 
             console.log(response);
         } catch (error) {
             console.log(error);
         }
     };
 
-    return (
+    return ( // HTML koden som skal sendes tilbake
         <form onSubmit={Handlesubmit()}>
             <input type="text"
                 placeholder="username"
