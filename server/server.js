@@ -17,18 +17,18 @@ app.use(express.json());
 const pool = mysql.createPool({
     connectionLimit: 10,
     host: 'localhost',
-    user: 'user',
+    user: 'admin',
     password: 'admin',
-    database: 'walfenstein',
+    database: 'wolfensteinDB',
 });
 
 
 app.post('/signup', (req, res) => {
-    const { name, email, password } = req.body;
+    const { name, email } = req.body;
     console.log("hewwo");
 
-    res.json({message: 'sucess'})
-/*     const sql = 'INSERT INTO people (name, email) VALUES (?, ?)';
+    
+    const sql = 'INSERT INTO people (name, email) VALUES (?, ?)';
     pool.query(sql, [name, email], (err, result) => {
         if (err) {
             console.error('Error inserting data:', err.message);
@@ -36,13 +36,14 @@ app.post('/signup', (req, res) => {
         }
         console.log('Inserted ' + result.affectedRows + ' row(s)');
         res.json({ message: 'User registered successfully' });
-    }); */
+    });
 });
 
 
 
 app.post('/login', (req, res) => {
-    const { username, password } = req.body;
+    const { username, pwd } = req.body;
+    
 
     const sql = 'SELECT * FROM users WHERE username = ?';
     pool.query(sql, [username], (err, results) => {
@@ -56,11 +57,26 @@ app.post('/login', (req, res) => {
         }
 
         const user = results[0];
-        if (password === user.password) { 
-            res.json({ message: 'Login successful' });
+        if (pwd === user.password) { 
+            let logged = true;
+            res.json({ message: 'Login successful', logged });
         } else {
             res.status(401).json({ error: 'Incorrect password' });
         }
+    });
+});
+
+app.post('/getlist', (req, res) => {
+
+    const sql = 'SELECT * FROM people';
+    pool.query(sql, [username, email], (err, results) => {
+        if (err) {
+            console.error('Error retrieving user:', err.message);
+            return res.status(500).json({ error: 'Error retrieving user' });
+        } else {
+            res.json({results});
+        }
+
     });
 });
 

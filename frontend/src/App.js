@@ -5,10 +5,8 @@ import Login from './components/login';
 import Signup from './components/home';
 
 function App() {
+  
 
-/*   const Submit = (e) => {
-
-  } */
 
   return (
     <div className="App">
@@ -21,6 +19,7 @@ function App() {
               </h1>
             </Col>
             <Signup></Signup>
+            <Login></Login>
 
 
           </Row>

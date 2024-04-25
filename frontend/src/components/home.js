@@ -2,6 +2,9 @@ import React, { useState } from "react";
 import { Button, Form } from 'react-bootstrap';
 import axios from 'axios';
 import Cookies from 'js-cookies';
+import Login from "./login";
+import {Link} from 'react-router-dom';
+
 
 const Signup = () => {  
     const [name, setName] = useState('');
@@ -9,13 +12,10 @@ const Signup = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        if (name === "login" && email === "login") {
-            
-        }
         try {
             const response = await axios.post("http://localhost:5000/signup", { name, email });
             console.log("Response:", response.data);
-            Cookies.setItem('signed_up', 'true', {expires: 7});
+            Cookies.setItem('signed_up', true, {expires: 7});
             console.log(Cookies);
         } catch (error) {
             console.log("Error:", error);
@@ -47,6 +47,7 @@ const Signup = () => {
             <Button variant="primary" type="submit">
                 Sign Up
             </Button>
+            
         </Form>
     );
 };
