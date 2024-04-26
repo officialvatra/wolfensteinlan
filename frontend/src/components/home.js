@@ -25,7 +25,7 @@ const Signup = () => {
     return (
         <Form onSubmit={handleSubmit}>
             <Form.Group controlId="name">
-                <Form.Label>Name</Form.Label>
+                <Form.Label>Name: </Form.Label>
                 <Form.Control
                     type="text"
                     placeholder="Enter your name"
@@ -35,7 +35,7 @@ const Signup = () => {
             </Form.Group>
 
             <Form.Group controlId="email">
-                <Form.Label>Email address</Form.Label>
+                <Form.Label>Email address: </Form.Label>
                 <Form.Control
                     type="email"
                     placeholder="Enter your email"

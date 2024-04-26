@@ -69,16 +69,19 @@ app.post('/login', (req, res) => {
 app.post('/getlist', (req, res) => {
 
     const sql = 'SELECT * FROM people';
-    pool.query(sql, [username, email], (err, results) => {
+    pool.query(sql, (err, results) => {
         if (err) {
-            console.error('Error retrieving user:', err.message);
-            return res.status(500).json({ error: 'Error retrieving user' });
+            console.error('Error retrieving users:', err.message);
+            return res.status(500).json({ error: 'Error retrieving users' });
         } else {
-            res.json({results});
+            const userList = results;
+            console.log(userList);
+            res.json({ userList });
         }
 
     });
 });
+
 
 
 app.listen(port, () => {

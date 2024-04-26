@@ -19,6 +19,7 @@ function App() {
               </h1>
             </Col>
             <Signup></Signup>
+            <br></br>
             <Login></Login>
 
 

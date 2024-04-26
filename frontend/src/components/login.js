@@ -7,22 +7,21 @@ import { Route } from "react-router-dom";
 const Login = () => {
     const [username, setuserName] = useState('');
     const [pwd, setpwd] = useState('');
-    const [name, setName] = useState('');
-    const [email, setEmail] = useState('');
+    const [pplobj, setpplobj] = useState([]);
+
 
     const loginsubmit = async (e) => {
         e.preventDefault();
         try {
             const response = await axios.post("http://localhost:5000/login", { username, pwd });
             console.log("Response:", response.data);
-            if (response.logged === true) {
+            if (response.data.logged === true) {
 
-                const response2 = await axios.post("http://localhost:5000/getlist", { name, email });
-                console.log(response2);
-                setName(name);
-                setEmail(email);
-
+                const response2 = await axios.post("http://localhost:5000/getlist");
+                
+                setpplobj(response2.data.userList);
             }
+            
 
         } catch (error) {
             console.log("Error:", error);
@@ -32,7 +31,7 @@ const Login = () => {
     return (
         <Form onSubmit={loginsubmit}>
             <Form.Group controlId="username">
-                <Form.Label>Name</Form.Label>
+                <Form.Label>Name: </Form.Label>
                 <Form.Control
                     type="text"
                     placeholder="Enter your username"
@@ -42,7 +41,7 @@ const Login = () => {
             </Form.Group>
 
             <Form.Group controlId="pwd">
-                <Form.Label>password</Form.Label>
+                <Form.Label>password: </Form.Label>
                 <Form.Control
                     type="password"
                     placeholder="password"
@@ -56,10 +55,20 @@ const Login = () => {
             </Button>
             <Row className='px-5 my-5'>
 
-            <Col sm='12'>
-                <p>{name}</p>
-                <p>{email}</p>
-            </Col>
+                <Col sm='12'>
+                    <ul>
+
+                        {pplobj.map(user => (
+                            <li key={user.id}>
+
+                                <p>Name: {user.name}</p>
+                                <p>Email: {user.email}</p>
+                                <p>-------</p>
+
+                            </li>
+                        ))}
+                    </ul>
+                </Col>
             </Row>
 
         </Form>
