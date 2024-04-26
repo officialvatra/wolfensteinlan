@@ -13,3 +13,14 @@ CREATE TABLE IF NOT EXISTS people (
     email VARCHAR(255) NOT NULL,
     UNIQUE(email)
 );
+
+
+
+
+
+/* ---------- */
+
+
+CREATE USER 'admin'@'localhost' IDENTIFIED BY 'admin';
+GRANT ALL PRIVILEGES ON wolfensteindb.* TO 'admin'@'localhost';
+FLUSH PRIVILEGES;

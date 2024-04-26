@@ -17,8 +17,8 @@ app.use(express.json());
 const pool = mysql.createPool({
     connectionLimit: 10,
     host: 'localhost',
-    user: 'admin',
-    password: 'admin',
+    user: 'root',
+    password: 'Admin',
     database: 'wolfensteinDB',
 });
 
