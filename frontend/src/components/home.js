@@ -3,7 +3,6 @@ import { Button, Form } from 'react-bootstrap';
 import axios from 'axios';
 import Cookies from 'js-cookies';
 import Login from "./login";
-import {Link} from 'react-router-dom';
 
 
 const Signup = () => {  
