@@ -1,0 +1,15 @@
+version: '3'
+services:
+  express:
+    build:
+      context: ./server
+    ports:
+      - '5000:5000'
+    depends_on:
+      - react
+
+  react:
+    build:
+      context: ./frontend
+    ports:
+      - '3000:3000'

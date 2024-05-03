@@ -1,42 +1,50 @@
-import React from "react";
-import { Col, Row, Button, Form } from 'react-bootstrap';
-import Axios from 'axios';
-import { useState } from "react";
-import axios from "axios";
+import React, { useState } from "react";
+import { Button, Form, Container } from 'react-bootstrap';
+import axios from 'axios';
 
-const Signup = () => {
-    const [name, setname] = useState();
-    const [email, setemail] = useState();
+const Signup = () => {  
+    const [name, setName] = useState('');
+    const [email, setEmail] = useState('');
 
-    const Handlesubmit = async () => {
-        // e.preventdefault();
+    const handleSubmit = async (e) => {
+        e.preventDefault();
         try {
-            const response = await axios.post("", { name, email });
-            console.log(response);
+            const response = await axios.post("http://localhost:5000/signup", { name, email });
+            console.log("Response:", response.data);
         } catch (error) {
-            console.log(error);
+            console.log("Error:", error);
         }
     };
 
     return (
-        <form onSubmit={Handlesubmit()}>
-            <input type="text"
-                placeholder="name"
-                value={name}
-                onChange={(e) => setname(e.target.value)}
-            />
-            <input type="text"
-                placeholder="email"
-                value={email}
-                onChange={(e) => setemail(e.target.value)}
-            />
-            <Button type="submit">sign up</Button>
-        </form>
-    )
+        <Container className="d-flex justify-content-center align-items-center vh-100">
+            <Form onSubmit={handleSubmit} className="p-4 bg-lightblue rounded border border-primary">
+                <Form.Group controlId="name">
+                    <Form.Label>Name: </Form.Label>
+                    <Form.Control
+                        type="text"
+                        placeholder="Enter your name"
+                        value={name}
+                        onChange={(e) => setName(e.target.value)}
+                    />
+                </Form.Group>
 
+                <Form.Group controlId="email">
+                    <Form.Label>Email address: </Form.Label>
+                    <Form.Control
+                        type="email"
+                        placeholder="Enter your email"
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                    />
+                </Form.Group>
 
+                <Button variant="success" type="submit" className="mt-3">
+                    Sign Up
+                </Button>
+            </Form>
+        </Container>
+    );
 };
 
 export default Signup;
-
-
