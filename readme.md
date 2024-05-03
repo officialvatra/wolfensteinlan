@@ -5,8 +5,8 @@ Prerequisites
 
 Before you begin, ensure you have the following installed on your machine:
 
-    Docker: Install Docker
-    Docker Compose: Install Docker Compose
+## Docker: Install Docker
+## Docker Compose: Install Docker Compose
 
 Getting Started
 
@@ -14,16 +14,16 @@ Clone this repository to your local machine:
 
 bash
 
-    git clone <https://github.com/officialvatra/wolfensteinlan.git>
-    cd <wolfenstainlan>
+    git clone https://github.com/officialvatra/wolfensteinlan.git
+    cd wolfenstainlan
 
 Build the Docker containers:
 
 bash
 
-docker-compose build
+    docker-compose build
 
-    Start the Docker containers:
+Start the Docker containers:
 
 bash
 
