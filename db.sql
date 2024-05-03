@@ -21,6 +21,6 @@ CREATE TABLE IF NOT EXISTS people (
 /* ---------- */
 
 
-CREATE USER 'admin'@'localhost' IDENTIFIED BY 'admin';
-GRANT ALL PRIVILEGES ON wolfensteindb.* TO 'admin'@'localhost';
+CREATE USER 'admin'@'%' IDENTIFIED BY 'admin';
+GRANT ALL PRIVILEGES ON wolfensteindb.* TO 'admin'@'%';
 FLUSH PRIVILEGES;
