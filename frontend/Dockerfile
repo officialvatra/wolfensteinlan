@@ -22,8 +22,11 @@ FROM nginx:alpine
 # Copy build files from the previous stage
 COPY --from=build /usr/src/app/build /usr/share/nginx/html
 
-# Expose port 80
+# Expose port 3000
 EXPOSE 3000
+
+# Update default Nginx configuration to use port 3000
+RUN sed -i 's/80/3000/' /etc/nginx/conf.d/default.conf
 
 # Start Nginx server
 CMD ["nginx", "-g", "daemon off;"]
