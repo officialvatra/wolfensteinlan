@@ -10,14 +10,14 @@ Before you begin, ensure you have the following installed on your machine:
 
 Getting Started
 
-    Clone this repository to your local machine:
+Clone this repository to your local machine:
 
 bash
 
-git clone https://github.com/officialvatra/wolfensteinlan.git
-cd wolfenstainlan
+    git clone <https://github.com/officialvatra/wolfensteinlan.git>
+    cd <wolfenstainlan>
 
-    Build the Docker containers:
+Build the Docker containers:
 
 bash
 
@@ -27,7 +27,7 @@ docker-compose build
 
 bash
 
-docker-compose up
+    docker-compose up
 
 This command will start the React frontend and Express backend in separate containers.
 
@@ -38,15 +38,15 @@ This command will start the React frontend and Express backend in separate conta
 
 Directory Structure
 
-.
-├── frontend/           # React frontend files
-│   ├── Dockerfile      # Dockerfile for React frontend
-│   ├── public/
-│   └── src/
-├── backend/            # Express backend files
-│   ├── Dockerfile      # Dockerfile for Express backend
-│   └── server.js       # Express server file
-└── docker-compose.yml  # Docker Compose configuration file
+    .
+    ├── frontend/           # React frontend files
+    │   ├── Dockerfile      # Dockerfile for React frontend
+    │   ├── public/
+    │   └── src/
+    ├── backend/            # Express backend files
+    │   ├── Dockerfile      # Dockerfile for Express backend
+    │   └── server.js       # Express server file
+    └── docker-compose.yml  # Docker Compose configuration file
 
 Customization
 
